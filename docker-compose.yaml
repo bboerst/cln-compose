@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  lightningd:
+    image: elementsproject/lightningd
+    container_name: lightningd
+    restart: unless-stopped
+    volumes:
+      - ./lightning-data:/root/.lightning
+      - ./backup:/root/backup
+    ports:
+      - "9735:9735"  # Lightning Network port
+      - "3010:3010"  # REST API port
